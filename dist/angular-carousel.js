@@ -108,13 +108,7 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
             return transformProperty;
         }
 
-        //Detect support of translate3d
-        function detect3dSupport() {
-            return Modernizr.csstransforms3d;
-        }
-
         return {
-            has3d: detect3dSupport(),
             transformProperty: detectTransformProperty()
         };
 
@@ -128,7 +122,7 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                 },
                 opacity,
                 absoluteLeft = (slideIndex * 100) + offset,
-                slideTransformValue = DeviceCapabilities.has3d ? 'translate3d(' + absoluteLeft + '%, 0, 0)' : 'translate3d(' + absoluteLeft + '%, 0)',
+                slideTransformValue = 'translate3d(' + absoluteLeft + '%, 0, 0)',
                 distance = ((100 - Math.abs(absoluteLeft)) / 100);
 
             if (!DeviceCapabilities.transformProperty) {
