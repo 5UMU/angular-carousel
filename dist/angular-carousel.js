@@ -529,6 +529,11 @@ angular.module('angular-carousel').run(['$templateCache', function($templateCach
                             scope[deepWatch?'$watch':'$watchCollection'](repeatCollection, function(newValue, oldValue) {
                                 //console.log('repeatCollection', currentSlides);
                                 currentSlides = newValue;
+                                
+                                if(!currentSlides){
+                                  return;
+                                }
+                                
                                 // if deepWatch ON ,manually compare objects to guess the new position
                                 if (!angular.isArray(currentSlides)) {
                                   throw Error('the slides collection must be an Array');
